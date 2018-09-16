@@ -229,133 +229,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/redis/2018-09-03-Redis-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/redis/2018-09-03-Redis-notes/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Summary-from-Redis-深度历险"><a href="#Summary-from-Redis-深度历险" class="headerlink" title="Summary from Redis 深度历险"></a>Summary from <a href="https://juejin.im/book/5afc2e5f6fb9a07a9b362527/section/5afc35fb6fb9a07abf72b477" target="_blank" rel="noopener">Redis 深度历险</a></h1><h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><ol>
-<li><p>原子问题 To ensure the automic</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setnx lock:beihanz true </span><br><span class="line">expire lock:beihanz 5</span><br><span class="line">--&gt; </span><br><span class="line">set lock:beihanz true ex 5 nx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>超时问题<br>Redis 的分布式锁不能解决超时问题，如果在加锁和释放锁之间的逻辑执行的太长，以至于超出了锁的超时限制，就会出现问题。因为这时候锁过期了，第二个线程重新持有了这把锁，但是紧接着第一个线程执行完了业务逻辑，就把锁给释放了，第三个线程就会在第二个线程逻辑执行完之间拿到了锁。<br><strong>解决方案</strong>：使用随机数作为锁，然后再释放锁的时候判断是不是当前随机数。</p>
-</li>
-<li>实现可重入<br>使用ThreadLocal 记录当前锁的计数<h2 id="延时队列"><a href="#延时队列" class="headerlink" title="延时队列"></a>延时队列</h2></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/redis/Redis-事务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -517,6 +390,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/redis/2018-09-03-Redis-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beihang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beihang's Tech Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/redis/2018-09-03-Redis-notes/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Summary-from-Redis-深度历险"><a href="#Summary-from-Redis-深度历险" class="headerlink" title="Summary from Redis 深度历险"></a>Summary from <a href="https://juejin.im/book/5afc2e5f6fb9a07a9b362527/section/5afc35fb6fb9a07abf72b477" target="_blank" rel="noopener">Redis 深度历险</a></h1><h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><ol>
+<li><p>原子问题 To ensure the automic</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setnx lock:beihanz true </span><br><span class="line">expire lock:beihanz 5</span><br><span class="line">--&gt; </span><br><span class="line">set lock:beihanz true ex 5 nx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>超时问题<br>Redis 的分布式锁不能解决超时问题，如果在加锁和释放锁之间的逻辑执行的太长，以至于超出了锁的超时限制，就会出现问题。因为这时候锁过期了，第二个线程重新持有了这把锁，但是紧接着第一个线程执行完了业务逻辑，就把锁给释放了，第三个线程就会在第二个线程逻辑执行完之间拿到了锁。<br><strong>解决方案</strong>：使用随机数作为锁，然后再释放锁的时候判断是不是当前随机数。</p>
+</li>
+<li>实现可重入<br>使用ThreadLocal 记录当前锁的计数<h2 id="延时队列"><a href="#延时队列" class="headerlink" title="延时队列"></a>延时队列</h2></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/redis/Redis-基本数据-持久化-2018-09-09/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -614,146 +614,6 @@
 </li>
 </ul>
 <p>参考博客：<br><a href="https://redis.io/topics/persistence" target="_blank" rel="noopener">官网</a><br><a href="https://www.cnblogs.com/MPPC/p/5924738.html" target="_blank" rel="noopener">解析配置文件 redis.conf、Redis持久化RDB、Redis的主从复制</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/git-常用命令2018-09-15/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/日记本/git-常用命令2018-09-15/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>生效顺序：<strong>3 -&gt; 2 -&gt; 1</strong></p>
-<ol>
-<li>对系统上所有用户及他们所拥有的仓库都生效 -&gt; /etc/gitconfig<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --system xxx</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Git 会读写这个文件。</p>
-<ol start="2">
-<li><p>每个用户的~/.gitconfig文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global xxx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>各个库中 Git 目录下的配置文件（.git/config）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config xxx</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="设置git分支的跟踪关系"><a href="#设置git分支的跟踪关系" class="headerlink" title="设置git分支的跟踪关系"></a>设置git分支的跟踪关系</h2><h3 id="1、新建一个分支时设置跟踪关系"><a href="#1、新建一个分支时设置跟踪关系" class="headerlink" title="1、新建一个分支时设置跟踪关系"></a>1、新建一个分支时设置跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  checkout -b new_branch_name  [--track] origin/remote_branch_name</span><br></pre></td></tr></table></figure>
-<p>–track选项可以省略</p>
-<h3 id="2、设置已有分支和远端分支的跟踪关系"><a href="#2、设置已有分支和远端分支的跟踪关系" class="headerlink" title="2、设置已有分支和远端分支的跟踪关系"></a>2、设置已有分支和远端分支的跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch -u  origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure>
-<p>注意：-u选项是–set-upstream-to的简写，因此上面这条命令可以写作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch --set-upstream-to=origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure></p>
-<p>local_branch_name可以省略，默认值为当前分支</p>
-<h2 id="多个git-ssh-key-问题"><a href="#多个git-ssh-key-问题" class="headerlink" title="多个git ssh key 问题"></a>多个git ssh key 问题</h2><p><a href="https://www.jianshu.com/p/f7f4142a1556" target="_blank" rel="noopener">https://www.jianshu.com/p/f7f4142a1556</a></p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html" target="_blank" rel="noopener">https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html</a><br><a href="https://www.jianshu.com/p/82123524e1c0" target="_blank" rel="noopener">本地git config配置和git基本操作</a></p>
 
           
         
@@ -986,6 +846,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beihang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beihang's Tech Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Suppressing-Unwanted-Behavior"><a href="#Suppressing-Unwanted-Behavior" class="headerlink" title="Suppressing Unwanted Behavior"></a>Suppressing Unwanted Behavior</h1><h2 id="Quick-summary"><a href="#Quick-summary" class="headerlink" title="Quick summary"></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#quick-summary" target="_blank" rel="noopener"></a>Quick summary</h2><ol>
+<li>Use the <code>@RunWith(PowerMockRunner.class)</code> annotation at the class-level of the test case.</li>
+<li>Use the <code>@PrepareForTest(ClassWithEvilParentConstructor.class)</code> annotation at the class-level of the test case in combination with<br><code>suppress(constructor(EvilParent.class))</code> to suppress all constructors for the EvilParent class.</li>
+<li>Use the  <code>Whitebox.newInstance(ClassWithEvilConstructor.class)</code> method to instantiate a class without invoking the constructor what so ever.</li>
+<li><p>Use the <code>@SuppressStaticInitializationFor(&quot;org.mycompany.ClassWithEvilStaticInitializer&quot;)</code>annotation to remove the static initializer for the the <code>org.mycompany.ClassWithEvilStaticInitializer</code></p>
+<p>class.</p>
+</li>
+<li>Use the<code>@PrepareForTest(ClassWithEvilMethod.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(method(ClassWithEvilMethod.class, &quot;methodName&quot;))</code><br>to suppress the method with name “methodName” in the ClassWithEvilMethod class.</li>
+<li>Use the <code>@PrepareForTest(ClassWithEvilField.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(field(ClassWithEvilField.class, &quot;fieldName&quot;))</code><br>to suppress the field with name “fieldName” in the ClassWithEvilField class.</li>
+</ol>
+<p>You’ll find the member modification and member matcher methods here:</p>
+<ul>
+<li><code>org.powermock.api.support.membermodification.MemberModifier</code></li>
+<li><code>org.powermock.api.support.membermodification.MemberMatcher</code></li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#example" target="_blank" rel="noopener"></a></h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/powermock-series-2---测试私有方法，私有构造函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1138,287 +1132,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Suppressing-Unwanted-Behavior"><a href="#Suppressing-Unwanted-Behavior" class="headerlink" title="Suppressing Unwanted Behavior"></a>Suppressing Unwanted Behavior</h1><h2 id="Quick-summary"><a href="#Quick-summary" class="headerlink" title="Quick summary"></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#quick-summary" target="_blank" rel="noopener"></a>Quick summary</h2><ol>
-<li>Use the <code>@RunWith(PowerMockRunner.class)</code> annotation at the class-level of the test case.</li>
-<li>Use the <code>@PrepareForTest(ClassWithEvilParentConstructor.class)</code> annotation at the class-level of the test case in combination with<br><code>suppress(constructor(EvilParent.class))</code> to suppress all constructors for the EvilParent class.</li>
-<li>Use the  <code>Whitebox.newInstance(ClassWithEvilConstructor.class)</code> method to instantiate a class without invoking the constructor what so ever.</li>
-<li><p>Use the <code>@SuppressStaticInitializationFor(&quot;org.mycompany.ClassWithEvilStaticInitializer&quot;)</code>annotation to remove the static initializer for the the <code>org.mycompany.ClassWithEvilStaticInitializer</code></p>
-<p>class.</p>
-</li>
-<li>Use the<code>@PrepareForTest(ClassWithEvilMethod.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(method(ClassWithEvilMethod.class, &quot;methodName&quot;))</code><br>to suppress the method with name “methodName” in the ClassWithEvilMethod class.</li>
-<li>Use the <code>@PrepareForTest(ClassWithEvilField.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(field(ClassWithEvilField.class, &quot;fieldName&quot;))</code><br>to suppress the field with name “fieldName” in the ClassWithEvilField class.</li>
-</ol>
-<p>You’ll find the member modification and member matcher methods here:</p>
-<ul>
-<li><code>org.powermock.api.support.membermodification.MemberModifier</code></li>
-<li><code>org.powermock.api.support.membermodification.MemberMatcher</code></li>
-</ul>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#example" target="_blank" rel="noopener"></a></h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/画图/UML-图-2018-09-04/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/画图/UML-图-2018-09-04/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>转自 <a href="https://blog.csdn.net/xiehuimx/article/details/53427452" target="_blank" rel="noopener">UML 类图详解</a></p>
-<h2 id="类信息"><a href="#类信息" class="headerlink" title="类信息"></a>类信息</h2><p><img src="https://upload-images.jianshu.io/upload_images/2325930-73a3e29608c58a5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="类图"></p>
-<h3 id="类名"><a href="#类名" class="headerlink" title="类名"></a>类名</h3><ul>
-<li>Abstract 右下角 {abstract}<br><img src="https://upload-images.jianshu.io/upload_images/2325930-d810c533c393eb95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="abstract class"><h3 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h3></li>
-<li><strong>格式</strong> ：可见性  名称:类型 [ = 默认值 ]</li>
-<li>private,public 和protected,在类图中分别用符号-、+和#表示<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3></li>
-<li><strong>格式</strong> ： 可见性  名称(参数列表) [ : 返回类型]</li>
-</ul>
-<h2 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h2><h3 id="泛化-Generalization-关系"><a href="#泛化-Generalization-关系" class="headerlink" title="泛化(Generalization)关系"></a>泛化(Generalization)关系</h3><ul>
-<li>概念 ： 类和类，接口和接口继承关系</li>
-<li>图形表示： 带空心三角形的直线</li>
-<li>例子：<br><img src="https://upload-images.jianshu.io/upload_images/2325930-263b1e6e60a76d2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="继承"><h3 id="实现（Realization-关系"><a href="#实现（Realization-关系" class="headerlink" title="实现（Realization)关系"></a>实现（Realization)关系</h3></li>
-<li>概念 ： 一个类和接口之间的关系</li>
-<li>图形表示： 带空心的三角形的虚线</li>
-<li>例子：<br><img src="https://upload-images.jianshu.io/upload_images/2325930-f0b544712b5ee6ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="实现"><h3 id="依赖-Dependence-关系"><a href="#依赖-Dependence-关系" class="headerlink" title="依赖(Dependence)关系"></a>依赖(Dependence)关系</h3></li>
-<li>概念 ：一个类中方法有另一个类作为参数</li>
-<li>图形表示： 带箭头的虚线</li>
-<li>例子： Students 与Bicyle 的关系<br><img src="https://upload-images.jianshu.io/upload_images/2325930-ff33f0199649c203.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="依赖"><h3 id="关联（Association）关系"><a href="#关联（Association）关系" class="headerlink" title="关联（Association）关系"></a>关联（Association）关系</h3></li>
-<li>概念 ：关联关系表示一个类和另一类有联系，类成员变量是另一个类</li>
-<li>图形表示：带箭头的实线</li>
-<li>例子： Teacher和Address就形成了一对一的关联关系<br><img src="https://upload-images.jianshu.io/upload_images/2325930-5ee6b3c3c38501ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关联"><h3 id="聚合-Aggregation-关系"><a href="#聚合-Aggregation-关系" class="headerlink" title="聚合(Aggregation)关系"></a>聚合(Aggregation)关系</h3></li>
-<li>概念 ：关联关系表示一个类和另一类有联系，类成员变量是另一个类</li>
-<li>图形表示：带空心菱形的直线</li>
-<li>例子： 一个Teachers对象有一辆汽车Car<br><img src="https://upload-images.jianshu.io/upload_images/2325930-c1ce85f3ac62e9d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="聚合"><h3 id="组合-Composition-关系"><a href="#组合-Composition-关系" class="headerlink" title="组合(Composition)关系"></a>组合(Composition)关系</h3></li>
-<li>概念 ：组合关系也是一种部分和整体的关系，但是部分存活周期受到整体的影响，若整体不存在则部分也将不存在</li>
-<li>图形表示：带实心菱形的直线</li>
-<li>例子： 一个手对象有一个手指<br><img src="https://upload-images.jianshu.io/upload_images/2325930-4861ca22914287ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="组合"></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/text-image/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1491,6 +1204,293 @@
         
           
             <p><img src="/2018/09/16/text-image/font1.jpg" alt="test image"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/git-常用命令2018-09-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beihang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beihang's Tech Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/日记本/git-常用命令2018-09-15/" itemprop="url">Git Config</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>生效顺序：<strong>3 -&gt; 2 -&gt; 1</strong></p>
+<ol>
+<li>对系统上所有用户及他们所拥有的仓库都生效 -&gt; /etc/gitconfig<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --system xxx</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Git 会读写这个文件。</p>
+<ol start="2">
+<li><p>每个用户的~/.gitconfig文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global xxx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>各个库中 Git 目录下的配置文件（.git/config）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config xxx</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="设置git分支的跟踪关系"><a href="#设置git分支的跟踪关系" class="headerlink" title="设置git分支的跟踪关系"></a>设置git分支的跟踪关系</h2><h3 id="1、新建一个分支时设置跟踪关系"><a href="#1、新建一个分支时设置跟踪关系" class="headerlink" title="1、新建一个分支时设置跟踪关系"></a>1、新建一个分支时设置跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  checkout -b new_branch_name  [--track] origin/remote_branch_name</span><br></pre></td></tr></table></figure>
+<p>–track选项可以省略</p>
+<h3 id="2、设置已有分支和远端分支的跟踪关系"><a href="#2、设置已有分支和远端分支的跟踪关系" class="headerlink" title="2、设置已有分支和远端分支的跟踪关系"></a>2、设置已有分支和远端分支的跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch -u  origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure>
+<p>注意：-u选项是–set-upstream-to的简写，因此上面这条命令可以写作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch --set-upstream-to=origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure></p>
+<p>local_branch_name可以省略，默认值为当前分支</p>
+<h2 id="多个git-ssh-key-问题"><a href="#多个git-ssh-key-问题" class="headerlink" title="多个git ssh key 问题"></a>多个git ssh key 问题</h2><p><a href="https://www.jianshu.com/p/f7f4142a1556" target="_blank" rel="noopener">https://www.jianshu.com/p/f7f4142a1556</a></p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html" target="_blank" rel="noopener">https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html</a><br><a href="https://www.jianshu.com/p/82123524e1c0" target="_blank" rel="noopener">本地git config配置和git基本操作</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/画图/UML-2018-09-04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beihang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beihang's Tech Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/画图/UML-2018-09-04/" itemprop="url">UML 类图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>转自 <a href="https://blog.csdn.net/xiehuimx/article/details/53427452" target="_blank" rel="noopener">UML 类图详解</a></p>
+<h2 id="类信息"><a href="#类信息" class="headerlink" title="类信息"></a>类信息</h2><p><img src="https://upload-images.jianshu.io/upload_images/2325930-73a3e29608c58a5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="类图"></p>
+<h3 id="类名"><a href="#类名" class="headerlink" title="类名"></a>类名</h3><ul>
+<li>Abstract 右下角 {abstract}<br><img src="https://upload-images.jianshu.io/upload_images/2325930-d810c533c393eb95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="abstract class"><h3 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h3></li>
+<li><strong>格式</strong> ：可见性  名称:类型 [ = 默认值 ]</li>
+<li>private,public 和protected,在类图中分别用符号-、+和#表示<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3></li>
+<li><strong>格式</strong> ： 可见性  名称(参数列表) [ : 返回类型]</li>
+</ul>
+<h2 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h2><h3 id="泛化-Generalization-关系"><a href="#泛化-Generalization-关系" class="headerlink" title="泛化(Generalization)关系"></a>泛化(Generalization)关系</h3><ul>
+<li>概念 ： 类和类，接口和接口继承关系</li>
+<li>图形表示： 带空心三角形的直线</li>
+<li>例子：<br><img src="https://upload-images.jianshu.io/upload_images/2325930-263b1e6e60a76d2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="继承"><h3 id="实现（Realization-关系"><a href="#实现（Realization-关系" class="headerlink" title="实现（Realization)关系"></a>实现（Realization)关系</h3></li>
+<li>概念 ： 一个类和接口之间的关系</li>
+<li>图形表示： 带空心的三角形的虚线</li>
+<li>例子：<br><img src="https://upload-images.jianshu.io/upload_images/2325930-f0b544712b5ee6ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="实现"><h3 id="依赖-Dependence-关系"><a href="#依赖-Dependence-关系" class="headerlink" title="依赖(Dependence)关系"></a>依赖(Dependence)关系</h3></li>
+<li>概念 ：一个类中方法有另一个类作为参数</li>
+<li>图形表示： 带箭头的虚线</li>
+<li>例子： Students 与Bicyle 的关系<br><img src="https://upload-images.jianshu.io/upload_images/2325930-ff33f0199649c203.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="依赖"><h3 id="关联（Association）关系"><a href="#关联（Association）关系" class="headerlink" title="关联（Association）关系"></a>关联（Association）关系</h3></li>
+<li>概念 ：关联关系表示一个类和另一类有联系，类成员变量是另一个类</li>
+<li>图形表示：带箭头的实线</li>
+<li>例子： Teacher和Address就形成了一对一的关联关系<br><img src="https://upload-images.jianshu.io/upload_images/2325930-5ee6b3c3c38501ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关联"><h3 id="聚合-Aggregation-关系"><a href="#聚合-Aggregation-关系" class="headerlink" title="聚合(Aggregation)关系"></a>聚合(Aggregation)关系</h3></li>
+<li>概念 ：关联关系表示一个类和另一类有联系，类成员变量是另一个类</li>
+<li>图形表示：带空心菱形的直线</li>
+<li>例子： 一个Teachers对象有一辆汽车Car<br><img src="https://upload-images.jianshu.io/upload_images/2325930-c1ce85f3ac62e9d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="聚合"><h3 id="组合-Composition-关系"><a href="#组合-Composition-关系" class="headerlink" title="组合(Composition)关系"></a>组合(Composition)关系</h3></li>
+<li>概念 ：组合关系也是一种部分和整体的关系，但是部分存活周期受到整体的影响，若整体不存在则部分也将不存在</li>
+<li>图形表示：带实心菱形的直线</li>
+<li>例子： 一个手对象有一个手指<br><img src="https://upload-images.jianshu.io/upload_images/2325930-4861ca22914287ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="组合"></li>
+</ul>
 
           
         
