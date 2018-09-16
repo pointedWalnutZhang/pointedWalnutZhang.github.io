@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Getting Starteduse : rely on EasyMock or Mockito and a test framework Bypass Encapsulation mock 绕过封装翻译自https://github.com/powermock/powermock/wiki/Bypass-Encapsulation Quick summaryWhitebox class prov">
+<meta name="description" content="Suppressing Unwanted BehaviorQuick summary Use the @RunWith(PowerMockRunner.class) annotation at the class-level of the test case. Use the @PrepareForTest(ClassWithEvilParentConstructor.class) annotat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Beihang&#39;s Tech Blog">
-<meta property="og:url" content="http://yoursite.com/2018/09/16/日记本/powermock-series-2---测试私有方法，私有构造函数/index.html">
+<meta property="og:title" content="Power Mock series 3 - Suppress unwanted behavior">
+<meta property="og:url" content="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-3---Suppress-Unwanted-Behavior/index.html">
 <meta property="og:site_name" content="Beihang&#39;s Tech Blog">
-<meta property="og:description" content="Getting Starteduse : rely on EasyMock or Mockito and a test framework Bypass Encapsulation mock 绕过封装翻译自https://github.com/powermock/powermock/wiki/Bypass-Encapsulation Quick summaryWhitebox class prov">
+<meta property="og:description" content="Suppressing Unwanted BehaviorQuick summary Use the @RunWith(PowerMockRunner.class) annotation at the class-level of the test case. Use the @PrepareForTest(ClassWithEvilParentConstructor.class) annotat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-16T03:19:11.000Z">
+<meta property="og:updated_time" content="2018-09-16T03:36:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Beihang&#39;s Tech Blog">
-<meta name="twitter:description" content="Getting Starteduse : rely on EasyMock or Mockito and a test framework Bypass Encapsulation mock 绕过封装翻译自https://github.com/powermock/powermock/wiki/Bypass-Encapsulation Quick summaryWhitebox class prov">
+<meta name="twitter:title" content="Power Mock series 3 - Suppress unwanted behavior">
+<meta name="twitter:description" content="Suppressing Unwanted BehaviorQuick summary Use the @RunWith(PowerMockRunner.class) annotation at the class-level of the test case. Use the @PrepareForTest(ClassWithEvilParentConstructor.class) annotat">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/16/日记本/powermock-series-2---测试私有方法，私有构造函数/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-3---Suppress-Unwanted-Behavior/"/>
 
 
 
 
 
-  <title> | Beihang's Tech Blog</title>
+  <title>Power Mock series 3 - Suppress unwanted behavior | Beihang's Tech Blog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/powermock-series-2---测试私有方法，私有构造函数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-3---Suppress-Unwanted-Behavior/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Power Mock series 3 - Suppress unwanted behavior</h1>
         
 
         <div class="post-meta">
@@ -261,7 +261,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
                 2018-09-16
               </time>
             
@@ -299,40 +299,22 @@
       
 
       
-        <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><p>use : rely on EasyMock or Mockito and a test framework</p>
-<h1 id="Bypass-Encapsulation-mock-绕过封装"><a href="#Bypass-Encapsulation-mock-绕过封装" class="headerlink" title="Bypass Encapsulation mock 绕过封装"></a>Bypass Encapsulation mock 绕过封装</h1><p>翻译自<br><a href="https://github.com/powermock/powermock/wiki/Bypass-Encapsulation" target="_blank" rel="noopener">https://github.com/powermock/powermock/wiki/Bypass-Encapsulation</a></p>
-<h2 id="Quick-summary"><a href="#Quick-summary" class="headerlink" title="Quick summary"></a>Quick summary</h2><p><a href="http://www.javadoc.io/doc/org.powermock/powermock-reflect/1.7.1" target="_blank" rel="noopener">Whitebox</a></p>
-<p>class provides a set of methods which could you help bypass encapsulation if it required. Usually, it’s not a good idea to get/modify non-public fields, but sometimes it’s only way to cover code by test for future refactoring.</p>
-<ol>
-<li>Use <code>Whitebox.setInternalState(..)</code> to set a non-public member of an instance or class. 设置内部私有成员</li>
-<li>Use <code>Whitebox.getInternalState(..)</code> to get a non-public member of an instance or class. 获取内部私有成员</li>
-<li>Use <code>Whitebox.invokeMethod(..)</code> to invoke a non-public method of an instance or class. 调用私有方法</li>
-<li>Use <code>Whitebox.invokeConstructor(..)</code> to create an instance of a class with a private constructor. 调用私有构造函数<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2></li>
+        <h1 id="Suppressing-Unwanted-Behavior"><a href="#Suppressing-Unwanted-Behavior" class="headerlink" title="Suppressing Unwanted Behavior"></a>Suppressing Unwanted Behavior</h1><h2 id="Quick-summary"><a href="#Quick-summary" class="headerlink" title="Quick summary"></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#quick-summary" target="_blank" rel="noopener"></a>Quick summary</h2><ol>
+<li>Use the <code>@RunWith(PowerMockRunner.class)</code> annotation at the class-level of the test case.</li>
+<li>Use the <code>@PrepareForTest(ClassWithEvilParentConstructor.class)</code> annotation at the class-level of the test case in combination with<br><code>suppress(constructor(EvilParent.class))</code> to suppress all constructors for the EvilParent class.</li>
+<li>Use the  <code>Whitebox.newInstance(ClassWithEvilConstructor.class)</code> method to instantiate a class without invoking the constructor what so ever.</li>
+<li><p>Use the <code>@SuppressStaticInitializationFor(&quot;org.mycompany.ClassWithEvilStaticInitializer&quot;)</code>annotation to remove the static initializer for the the <code>org.mycompany.ClassWithEvilStaticInitializer</code></p>
+<p>class.</p>
+</li>
+<li>Use the<code>@PrepareForTest(ClassWithEvilMethod.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(method(ClassWithEvilMethod.class, &quot;methodName&quot;))</code><br>to suppress the method with name “methodName” in the ClassWithEvilMethod class.</li>
+<li>Use the <code>@PrepareForTest(ClassWithEvilField.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(field(ClassWithEvilField.class, &quot;fieldName&quot;))</code><br>to suppress the field with name “fieldName” in the ClassWithEvilField class.</li>
 </ol>
+<p>You’ll find the member modification and member matcher methods here:</p>
 <ul>
-<li>1 调用私有方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private int sum(int a, int b) &#123;</span><br><span class="line">	return a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li><code>org.powermock.api.support.membermodification.MemberModifier</code></li>
+<li><code>org.powermock.api.support.membermodification.MemberMatcher</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int sum = Whitebox.&lt;Integer&gt; invokeMethod(myInstance, &quot;sum&quot;, 1, 2);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>2 私有方法重载情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">private int myMethod(int id) &#123;		</span><br><span class="line">	return 2*id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int myMethod(Integer id) &#123;		</span><br><span class="line">		return 3*id;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>根据传入参数class判断用哪个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int result = Whitebox.&lt;Integer&gt; invokeMethod(myInstance, new Class&lt;?&gt;[]&#123;int.class&#125;, &quot;myMethod&quot;, 1);</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>3 调用私有构造器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class PrivateConstructorInstantiationDemo &#123;</span><br><span class="line"></span><br><span class="line">	private final int state;</span><br><span class="line"></span><br><span class="line">	private PrivateConstructorInstantiationDemo(int state) &#123;</span><br><span class="line">		this.state = state;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int getState() &#123;</span><br><span class="line">		return state;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PrivateConstructorInstantiationDemo instance =  WhiteBox.invokeConstructor(</span><br><span class="line">				PrivateConstructorInstantiationDemo.class, 43);</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><ol start="4">
-<li>构造器重载的情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class PrivateConstructorInstantiationDemo &#123;</span><br><span class="line"></span><br><span class="line">	private final int state;</span><br><span class="line"></span><br><span class="line">	private PrivateConstructorInstantiationDemo(int state) &#123;</span><br><span class="line">		this.state = state;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private PrivateConstructorInstantiationDemo(Integer state) &#123;</span><br><span class="line">              this.state = state;</span><br><span class="line">              // do something else</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int getState() &#123;</span><br><span class="line">		return state;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<p>调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrivateConstructorInstantiationDemo instance = Whitebox.invokeConstructor(PrivateConstructorInstantiationDemo.class, new Class&lt;?&gt;[]&#123;Integer.class&#125;, 43);</span><br></pre></td></tr></table></figure></p>
-
+<h2 id=""><a href="#" class="headerlink" title=""></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#example" target="_blank" rel="noopener"></a></h2>
       
     </div>
     
@@ -356,8 +338,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/16/text-image/" rel="next" title="text image">
-                <i class="fa fa-chevron-left"></i> text image
+              <a href="/2018/09/16/GitCLI/git-常用命令2018-09-15/" rel="next" title="Git Config">
+                <i class="fa fa-chevron-left"></i> Git Config
               </a>
             
           </div>
@@ -366,8 +348,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/16/UML/UML-2018-09-04/" rel="prev" title="UML 类图">
+                UML 类图 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -445,7 +427,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -482,7 +464,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bypass-Encapsulation-mock-绕过封装"><span class="nav-number">2.</span> <span class="nav-text">Bypass Encapsulation mock 绕过封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-summary"><span class="nav-number">2.1.</span> <span class="nav-text">Quick summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例"><span class="nav-number">2.2.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Suppressing-Unwanted-Behavior"><span class="nav-number">1.</span> <span class="nav-text">Suppressing Unwanted Behavior</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-summary"><span class="nav-number">1.1.</span> <span class="nav-text">Quick summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.2.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
             
 
           </div>

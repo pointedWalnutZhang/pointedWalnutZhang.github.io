@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/redis/Redis-事务/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -248,440 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/16/redis/Redis-事务/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="事务阶段"><a href="#事务阶段" class="headerlink" title="事务阶段"></a>事务阶段</h2><ul>
-<li>标记</li>
-<li>入队</li>
-<li>执行<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2>下表列出了 redis 事务的相关命令：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>命令及描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><a href="http://www.runoob.com/redis/transactions-discard.html" target="_blank" rel="noopener">DISCARD</a>  取消事务，放弃执行事务块内的所有命令。</td>
-</tr>
-<tr>
-<td>2</td>
-<td><a href="http://www.runoob.com/redis/transactions-exec.html" target="_blank" rel="noopener">EXEC</a> 执行所有事务块内的命令。</td>
-</tr>
-<tr>
-<td>3</td>
-<td><a href="http://www.runoob.com/redis/transactions-multi.html" target="_blank" rel="noopener">MULTI</a> 标记一个事务块的开始。</td>
-</tr>
-<tr>
-<td>4</td>
-<td><a href="http://www.runoob.com/redis/transactions-unwatch.html" target="_blank" rel="noopener">UNWATCH</a> 取消 WATCH 命令对所有 key 的监视。</td>
-</tr>
-<tr>
-<td>5</td>
-<td><a href="http://www.runoob.com/redis/transactions-watch.html" target="_blank" rel="noopener">WATCH key [key …]</a>  监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="事务的几种情况"><a href="#事务的几种情况" class="headerlink" title="事务的几种情况"></a>事务的几种情况</h2><ul>
-<li>正常情况</li>
-<li>放弃事务：discard</li>
-<li>全部失败： 有一些错误的命令（Redis里面根本没有的命令）。事务全部放弃。</li>
-<li>错误命令失败：错误的使用一些命令（字符串加一），当前命令失败，事务中的其他命令成功。</li>
-<li>使用Watch：见下一节<h2 id="Watch"><a href="#Watch" class="headerlink" title="Watch"></a>Watch</h2>乐观锁：不加锁，使用版本号机制，当前修改必须大于版本号才能修改<br>Redis 锁的机制类似于乐观锁。在进行watch监控时，对watch的key进行加锁，当其他客户端或线程对其修改后，当前事务会返回失败。执行了exec，之前加的watch监控都被取消。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/redis/2018-09-03-Redis-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/redis/2018-09-03-Redis-notes/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Summary-from-Redis-深度历险"><a href="#Summary-from-Redis-深度历险" class="headerlink" title="Summary from Redis 深度历险"></a>Summary from <a href="https://juejin.im/book/5afc2e5f6fb9a07a9b362527/section/5afc35fb6fb9a07abf72b477" target="_blank" rel="noopener">Redis 深度历险</a></h1><h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><ol>
-<li><p>原子问题 To ensure the automic</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setnx lock:beihanz true </span><br><span class="line">expire lock:beihanz 5</span><br><span class="line">--&gt; </span><br><span class="line">set lock:beihanz true ex 5 nx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>超时问题<br>Redis 的分布式锁不能解决超时问题，如果在加锁和释放锁之间的逻辑执行的太长，以至于超出了锁的超时限制，就会出现问题。因为这时候锁过期了，第二个线程重新持有了这把锁，但是紧接着第一个线程执行完了业务逻辑，就把锁给释放了，第三个线程就会在第二个线程逻辑执行完之间拿到了锁。<br><strong>解决方案</strong>：使用随机数作为锁，然后再释放锁的时候判断是不是当前随机数。</p>
-</li>
-<li>实现可重入<br>使用ThreadLocal 记录当前锁的计数<h2 id="延时队列"><a href="#延时队列" class="headerlink" title="延时队列"></a>延时队列</h2></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/redis/Redis-基本数据-持久化-2018-09-09/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/redis/Redis-基本数据-持久化-2018-09-09/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="基本数据类型以及操作"><a href="#基本数据类型以及操作" class="headerlink" title="基本数据类型以及操作"></a>基本数据类型以及操作</h1><p>基本数据类型： string, hash, list, set, sort set<br>TO DO: 总结数据操作及应用场景</p>
-<h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><p>两种方式： RDB 和 AOF</p>
-<h2 id="选择和使用"><a href="#选择和使用" class="headerlink" title="选择和使用"></a>选择和使用</h2><p>（1）只做缓存： 可以都不同<br>（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整<br>（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save 900 1 这条规则<br>（4）启动AOF，最坏丢失不超过2秒数据。  a.带来一定的IO b.rewrite 阻塞写到新文件 可以将64M 改写为5G以上<br>（5）不使用AOF 仅靠Master-Slave Replication 实现高可用性，省掉IO，但是如果Master/Slave同时当掉，丢失十几分钟数据，启动脚本时比较 Master/Slave中较新的RDB文件载入。（新浪架构）</p>
-<p>启动时先读AOF?</p>
-<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>dump.rdb<br>持久化可以在指定的时间间隔内生成数据集的时间点快照<br>默认快照触发条件:</p>
-<ul>
-<li>1分钟改1万次</li>
-<li>or 5分钟改10次</li>
-<li>or 15分钟改1次<h3 id="RDB-的优点"><a href="#RDB-的优点" class="headerlink" title="RDB 的优点:"></a>RDB 的优点:</h3>（1）适合大规模数据恢复<br>（2）对数据完整性和一致性要求不高<h3 id="RDB-的缺点"><a href="#RDB-的缺点" class="headerlink" title="RDB 的缺点:"></a>RDB 的缺点:</h3>（1） 丢失最后一次保存的数据<br>（2）本身数据集大，fork() 可能会非常耗时，造成服务器在某某毫秒内停止处理客户端</li>
-</ul>
-<h2 id="AOF-Append-only-log"><a href="#AOF-Append-only-log" class="headerlink" title="AOF (Append only log)"></a>AOF (Append only log)</h2><p>以日志的形式来记录每个<strong>写</strong>操作，并在服务器启动时，通过重新执行这些命令来还原数据集。 最多丢失一秒数据。<br>redis.conf -&gt; <strong>appendonly.aof</strong></p>
-<blockquote>
-<p>AOF 启动 ： redis-server /../redis_aof.conf<br>AOF 修复 ： redis-check-aof –fix appendonly.aof (网络故障等)</p>
-</blockquote>
-<h3 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h3><p>No-appendfsync-on-rewrite no<br>auto-aof-rewrite-min-percentage 100<br>auto-aof-rewrite-min-size 64mb (默认)</p>
-<h3 id="Appendfsync"><a href="#Appendfsync" class="headerlink" title="Appendfsync"></a>Appendfsync</h3><ul>
-<li>Always : 同步持久化，每次发生数据变更立即记录到硬盘，性能差，数据完整性好<ul>
-<li>Everysec : <strong>默认配置</strong>。异步操作，每秒记录一次，有可能1秒数据丢失</li>
-<li>No <h3 id="Rewrite"><a href="#Rewrite" class="headerlink" title="Rewrite"></a>Rewrite</h3></li>
-<li>AOF文件追加会越来越大，为避免这种情况，新增重写机制，当AOF文件大小超过设定阈值，Redis会启动AOF文件内容压缩，只保留恢复数据的最小指令集，可以使用bgrewriteaof</li>
-<li>fork一条新进程 将整个内存钟数据库内容用命令的形式重写一个新的aof文件</li>
-<li>记录上一个重写AOF文件大小，默认配置是当AOF文件大小是上次rewrite后的一倍且文件大于64M时触发 redis.conf中（auto-aof-rewrite-min-percentage 100 auto-aof-rewrite-min-size 64mb）<h3 id="AOF优点"><a href="#AOF优点" class="headerlink" title="AOF优点"></a>AOF优点</h3>（1）配置灵活：每秒同步，每修改同步，不同步<h3 id="AOF缺点"><a href="#AOF缺点" class="headerlink" title="AOF缺点"></a>AOF缺点</h3>（1）相同数据aof文件大于rdb<br>（2）AOF运行效率慢于rdb，不同步效率和rdb相同</li>
-</ul>
-</li>
-</ul>
-<p>参考博客：<br><a href="https://redis.io/topics/persistence" target="_blank" rel="noopener">官网</a><br><a href="https://www.cnblogs.com/MPPC/p/5924738.html" target="_blank" rel="noopener">解析配置文件 redis.conf、Redis持久化RDB、Redis的主从复制</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/powermock-series-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/日记本/powermock-series-1/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/09/16/Java-Powermock/powermock-series-1/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -846,7 +413,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Backend-Redis/2018-09-03-Redis-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -865,7 +432,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/09/16/Backend-Redis/2018-09-03-Redis-notes/" itemprop="url">redis notes -  lock and queue</a></h1>
         
 
         <div class="post-meta">
@@ -877,7 +444,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
                 2018-09-16
               </time>
             
@@ -917,22 +484,15 @@
       
         
           
-            <h1 id="Suppressing-Unwanted-Behavior"><a href="#Suppressing-Unwanted-Behavior" class="headerlink" title="Suppressing Unwanted Behavior"></a>Suppressing Unwanted Behavior</h1><h2 id="Quick-summary"><a href="#Quick-summary" class="headerlink" title="Quick summary"></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#quick-summary" target="_blank" rel="noopener"></a>Quick summary</h2><ol>
-<li>Use the <code>@RunWith(PowerMockRunner.class)</code> annotation at the class-level of the test case.</li>
-<li>Use the <code>@PrepareForTest(ClassWithEvilParentConstructor.class)</code> annotation at the class-level of the test case in combination with<br><code>suppress(constructor(EvilParent.class))</code> to suppress all constructors for the EvilParent class.</li>
-<li>Use the  <code>Whitebox.newInstance(ClassWithEvilConstructor.class)</code> method to instantiate a class without invoking the constructor what so ever.</li>
-<li><p>Use the <code>@SuppressStaticInitializationFor(&quot;org.mycompany.ClassWithEvilStaticInitializer&quot;)</code>annotation to remove the static initializer for the the <code>org.mycompany.ClassWithEvilStaticInitializer</code></p>
-<p>class.</p>
+            <h1 id="Summary-from-Redis-深度历险"><a href="#Summary-from-Redis-深度历险" class="headerlink" title="Summary from Redis 深度历险"></a>Summary from <a href="https://juejin.im/book/5afc2e5f6fb9a07a9b362527/section/5afc35fb6fb9a07abf72b477" target="_blank" rel="noopener">Redis 深度历险</a></h1><h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><ol>
+<li><p>原子问题 To ensure the automic</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setnx lock:beihanz true </span><br><span class="line">expire lock:beihanz 5</span><br><span class="line">--&gt; </span><br><span class="line">set lock:beihanz true ex 5 nx</span><br></pre></td></tr></table></figure>
 </li>
-<li>Use the<code>@PrepareForTest(ClassWithEvilMethod.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(method(ClassWithEvilMethod.class, &quot;methodName&quot;))</code><br>to suppress the method with name “methodName” in the ClassWithEvilMethod class.</li>
-<li>Use the <code>@PrepareForTest(ClassWithEvilField.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(field(ClassWithEvilField.class, &quot;fieldName&quot;))</code><br>to suppress the field with name “fieldName” in the ClassWithEvilField class.</li>
+<li><p>超时问题<br>Redis 的分布式锁不能解决超时问题，如果在加锁和释放锁之间的逻辑执行的太长，以至于超出了锁的超时限制，就会出现问题。因为这时候锁过期了，第二个线程重新持有了这把锁，但是紧接着第一个线程执行完了业务逻辑，就把锁给释放了，第三个线程就会在第二个线程逻辑执行完之间拿到了锁。<br><strong>解决方案</strong>：使用随机数作为锁，然后再释放锁的时候判断是不是当前随机数。</p>
+</li>
+<li>实现可重入<br>使用ThreadLocal 记录当前锁的计数<h2 id="延时队列"><a href="#延时队列" class="headerlink" title="延时队列"></a>延时队列</h2></li>
 </ol>
-<p>You’ll find the member modification and member matcher methods here:</p>
-<ul>
-<li><code>org.powermock.api.support.membermodification.MemberModifier</code></li>
-<li><code>org.powermock.api.support.membermodification.MemberMatcher</code></li>
-</ul>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#example" target="_blank" rel="noopener"></a></h2>
+
           
         
       
@@ -980,7 +540,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/powermock-series-2---测试私有方法，私有构造函数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Backend-Redis/Redis-事务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -999,7 +559,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/16/日记本/powermock-series-2---测试私有方法，私有构造函数/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/09/16/Backend-Redis/Redis-事务/" itemprop="url">Redis Transaction</a></h1>
         
 
         <div class="post-meta">
@@ -1011,7 +571,313 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="事务阶段"><a href="#事务阶段" class="headerlink" title="事务阶段"></a>事务阶段</h2><ul>
+<li>标记</li>
+<li>入队</li>
+<li>执行<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2>下表列出了 redis 事务的相关命令：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令及描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="http://www.runoob.com/redis/transactions-discard.html" target="_blank" rel="noopener">DISCARD</a>  取消事务，放弃执行事务块内的所有命令。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="http://www.runoob.com/redis/transactions-exec.html" target="_blank" rel="noopener">EXEC</a> 执行所有事务块内的命令。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="http://www.runoob.com/redis/transactions-multi.html" target="_blank" rel="noopener">MULTI</a> 标记一个事务块的开始。</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="http://www.runoob.com/redis/transactions-unwatch.html" target="_blank" rel="noopener">UNWATCH</a> 取消 WATCH 命令对所有 key 的监视。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="http://www.runoob.com/redis/transactions-watch.html" target="_blank" rel="noopener">WATCH key [key …]</a>  监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="事务的几种情况"><a href="#事务的几种情况" class="headerlink" title="事务的几种情况"></a>事务的几种情况</h2><ul>
+<li>正常情况</li>
+<li>放弃事务：discard</li>
+<li>全部失败： 有一些错误的命令（Redis里面根本没有的命令）。事务全部放弃。</li>
+<li>错误命令失败：错误的使用一些命令（字符串加一），当前命令失败，事务中的其他命令成功。</li>
+<li>使用Watch：见下一节<h2 id="Watch"><a href="#Watch" class="headerlink" title="Watch"></a>Watch</h2>乐观锁：不加锁，使用版本号机制，当前修改必须大于版本号才能修改<br>Redis 锁的机制类似于乐观锁。在进行watch监控时，对watch的key进行加锁，当其他客户端或线程对其修改后，当前事务会返回失败。执行了exec，之前加的watch监控都被取消。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beihang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beihang's Tech Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/" itemprop="url">Redis 基本数据 && 持久化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基本数据类型以及操作"><a href="#基本数据类型以及操作" class="headerlink" title="基本数据类型以及操作"></a>基本数据类型以及操作</h1><p>基本数据类型： string, hash, list, set, sort set<br>TO DO: 总结数据操作及应用场景</p>
+<h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><p>两种方式： RDB 和 AOF</p>
+<h2 id="选择和使用"><a href="#选择和使用" class="headerlink" title="选择和使用"></a>选择和使用</h2><p>（1）只做缓存： 可以都不同<br>（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整<br>（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save 900 1 这条规则<br>（4）启动AOF，最坏丢失不超过2秒数据。  a.带来一定的IO b.rewrite 阻塞写到新文件 可以将64M 改写为5G以上<br>（5）不使用AOF 仅靠Master-Slave Replication 实现高可用性，省掉IO，但是如果Master/Slave同时当掉，丢失十几分钟数据，启动脚本时比较 Master/Slave中较新的RDB文件载入。（新浪架构）</p>
+<p>启动时先读AOF?</p>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>dump.rdb<br>持久化可以在指定的时间间隔内生成数据集的时间点快照<br>默认快照触发条件:</p>
+<ul>
+<li>1分钟改1万次</li>
+<li>or 5分钟改10次</li>
+<li>or 15分钟改1次<h3 id="RDB-的优点"><a href="#RDB-的优点" class="headerlink" title="RDB 的优点:"></a>RDB 的优点:</h3>（1）适合大规模数据恢复<br>（2）对数据完整性和一致性要求不高<h3 id="RDB-的缺点"><a href="#RDB-的缺点" class="headerlink" title="RDB 的缺点:"></a>RDB 的缺点:</h3>（1） 丢失最后一次保存的数据<br>（2）本身数据集大，fork() 可能会非常耗时，造成服务器在某某毫秒内停止处理客户端</li>
+</ul>
+<h2 id="AOF-Append-only-log"><a href="#AOF-Append-only-log" class="headerlink" title="AOF (Append only log)"></a>AOF (Append only log)</h2><p>以日志的形式来记录每个<strong>写</strong>操作，并在服务器启动时，通过重新执行这些命令来还原数据集。 最多丢失一秒数据。<br>redis.conf -&gt; <strong>appendonly.aof</strong></p>
+<blockquote>
+<p>AOF 启动 ： redis-server /../redis_aof.conf<br>AOF 修复 ： redis-check-aof –fix appendonly.aof (网络故障等)</p>
+</blockquote>
+<h3 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h3><p>No-appendfsync-on-rewrite no<br>auto-aof-rewrite-min-percentage 100<br>auto-aof-rewrite-min-size 64mb (默认)</p>
+<h3 id="Appendfsync"><a href="#Appendfsync" class="headerlink" title="Appendfsync"></a>Appendfsync</h3><ul>
+<li>Always : 同步持久化，每次发生数据变更立即记录到硬盘，性能差，数据完整性好<ul>
+<li>Everysec : <strong>默认配置</strong>。异步操作，每秒记录一次，有可能1秒数据丢失</li>
+<li>No <h3 id="Rewrite"><a href="#Rewrite" class="headerlink" title="Rewrite"></a>Rewrite</h3></li>
+<li>AOF文件追加会越来越大，为避免这种情况，新增重写机制，当AOF文件大小超过设定阈值，Redis会启动AOF文件内容压缩，只保留恢复数据的最小指令集，可以使用bgrewriteaof</li>
+<li>fork一条新进程 将整个内存钟数据库内容用命令的形式重写一个新的aof文件</li>
+<li>记录上一个重写AOF文件大小，默认配置是当AOF文件大小是上次rewrite后的一倍且文件大于64M时触发 redis.conf中（auto-aof-rewrite-min-percentage 100 auto-aof-rewrite-min-size 64mb）<h3 id="AOF优点"><a href="#AOF优点" class="headerlink" title="AOF优点"></a>AOF优点</h3>（1）配置灵活：每秒同步，每修改同步，不同步<h3 id="AOF缺点"><a href="#AOF缺点" class="headerlink" title="AOF缺点"></a>AOF缺点</h3>（1）相同数据aof文件大于rdb<br>（2）AOF运行效率慢于rdb，不同步效率和rdb相同</li>
+</ul>
+</li>
+</ul>
+<p>参考博客：<br><a href="https://redis.io/topics/persistence" target="_blank" rel="noopener">官网</a><br><a href="https://www.cnblogs.com/MPPC/p/5924738.html" target="_blank" rel="noopener">解析配置文件 redis.conf、Redis持久化RDB、Redis的主从复制</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-2---测试私有方法，私有构造函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beihang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beihang's Tech Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/Java-Powermock/powermock-series-2---测试私有方法，私有构造函数/" itemprop="url">PowerMock Series 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
                 2018-09-16
               </time>
             
@@ -1132,7 +998,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/text-image/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/UML/UML-2018-09-04/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -1151,267 +1017,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/16/text-image/" itemprop="url">text image</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/2018/09/16/text-image/font1.jpg" alt="test image"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/git-常用命令2018-09-15/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/日记本/git-常用命令2018-09-15/" itemprop="url">Git Config</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>生效顺序：<strong>3 -&gt; 2 -&gt; 1</strong></p>
-<ol>
-<li>对系统上所有用户及他们所拥有的仓库都生效 -&gt; /etc/gitconfig<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --system xxx</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Git 会读写这个文件。</p>
-<ol start="2">
-<li><p>每个用户的~/.gitconfig文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global xxx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>各个库中 Git 目录下的配置文件（.git/config）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config xxx</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="设置git分支的跟踪关系"><a href="#设置git分支的跟踪关系" class="headerlink" title="设置git分支的跟踪关系"></a>设置git分支的跟踪关系</h2><h3 id="1、新建一个分支时设置跟踪关系"><a href="#1、新建一个分支时设置跟踪关系" class="headerlink" title="1、新建一个分支时设置跟踪关系"></a>1、新建一个分支时设置跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  checkout -b new_branch_name  [--track] origin/remote_branch_name</span><br></pre></td></tr></table></figure>
-<p>–track选项可以省略</p>
-<h3 id="2、设置已有分支和远端分支的跟踪关系"><a href="#2、设置已有分支和远端分支的跟踪关系" class="headerlink" title="2、设置已有分支和远端分支的跟踪关系"></a>2、设置已有分支和远端分支的跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch -u  origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure>
-<p>注意：-u选项是–set-upstream-to的简写，因此上面这条命令可以写作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch --set-upstream-to=origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure></p>
-<p>local_branch_name可以省略，默认值为当前分支</p>
-<h2 id="多个git-ssh-key-问题"><a href="#多个git-ssh-key-问题" class="headerlink" title="多个git ssh key 问题"></a>多个git ssh key 问题</h2><p><a href="https://www.jianshu.com/p/f7f4142a1556" target="_blank" rel="noopener">https://www.jianshu.com/p/f7f4142a1556</a></p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html" target="_blank" rel="noopener">https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html</a><br><a href="https://www.jianshu.com/p/82123524e1c0" target="_blank" rel="noopener">本地git config配置和git基本操作</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/画图/UML-2018-09-04/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Beihang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Beihang's Tech Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/画图/UML-2018-09-04/" itemprop="url">UML 类图</a></h1>
+                <a class="post-title-link" href="/2018/09/16/UML/UML-2018-09-04/" itemprop="url">UML 类图</a></h1>
         
 
         <div class="post-meta">
@@ -1539,7 +1145,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/15/HelloHEXO/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-3---Suppress-Unwanted-Behavior/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -1558,7 +1164,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/15/HelloHEXO/" itemprop="url">test</a></h1>
+                <a class="post-title-link" href="/2018/09/16/Java-Powermock/powermock-series-3---Suppress-Unwanted-Behavior/" itemprop="url">Power Mock series 3 - Suppress unwanted behavior</a></h1>
         
 
         <div class="post-meta">
@@ -1570,8 +1176,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-15T23:08:44+08:00">
-                2018-09-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
+                2018-09-16
               </time>
             
 
@@ -1610,7 +1216,161 @@
       
         
           
-            <p>Good night, xiangbao</p>
+            <h1 id="Suppressing-Unwanted-Behavior"><a href="#Suppressing-Unwanted-Behavior" class="headerlink" title="Suppressing Unwanted Behavior"></a>Suppressing Unwanted Behavior</h1><h2 id="Quick-summary"><a href="#Quick-summary" class="headerlink" title="Quick summary"></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#quick-summary" target="_blank" rel="noopener"></a>Quick summary</h2><ol>
+<li>Use the <code>@RunWith(PowerMockRunner.class)</code> annotation at the class-level of the test case.</li>
+<li>Use the <code>@PrepareForTest(ClassWithEvilParentConstructor.class)</code> annotation at the class-level of the test case in combination with<br><code>suppress(constructor(EvilParent.class))</code> to suppress all constructors for the EvilParent class.</li>
+<li>Use the  <code>Whitebox.newInstance(ClassWithEvilConstructor.class)</code> method to instantiate a class without invoking the constructor what so ever.</li>
+<li><p>Use the <code>@SuppressStaticInitializationFor(&quot;org.mycompany.ClassWithEvilStaticInitializer&quot;)</code>annotation to remove the static initializer for the the <code>org.mycompany.ClassWithEvilStaticInitializer</code></p>
+<p>class.</p>
+</li>
+<li>Use the<code>@PrepareForTest(ClassWithEvilMethod.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(method(ClassWithEvilMethod.class, &quot;methodName&quot;))</code><br>to suppress the method with name “methodName” in the ClassWithEvilMethod class.</li>
+<li>Use the <code>@PrepareForTest(ClassWithEvilField.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(field(ClassWithEvilField.class, &quot;fieldName&quot;))</code><br>to suppress the field with name “fieldName” in the ClassWithEvilField class.</li>
+</ol>
+<p>You’ll find the member modification and member matcher methods here:</p>
+<ul>
+<li><code>org.powermock.api.support.membermodification.MemberModifier</code></li>
+<li><code>org.powermock.api.support.membermodification.MemberMatcher</code></li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#example" target="_blank" rel="noopener"></a></h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/GitCLI/git-常用命令2018-09-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Beihang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Beihang's Tech Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/GitCLI/git-常用命令2018-09-15/" itemprop="url">Git Config</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>生效顺序：<strong>3 -&gt; 2 -&gt; 1</strong></p>
+<ol>
+<li>对系统上所有用户及他们所拥有的仓库都生效 -&gt; /etc/gitconfig<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --system xxx</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Git 会读写这个文件。</p>
+<ol start="2">
+<li><p>每个用户的~/.gitconfig文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global xxx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>各个库中 Git 目录下的配置文件（.git/config）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config xxx</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="设置git分支的跟踪关系"><a href="#设置git分支的跟踪关系" class="headerlink" title="设置git分支的跟踪关系"></a>设置git分支的跟踪关系</h2><h3 id="1、新建一个分支时设置跟踪关系"><a href="#1、新建一个分支时设置跟踪关系" class="headerlink" title="1、新建一个分支时设置跟踪关系"></a>1、新建一个分支时设置跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  checkout -b new_branch_name  [--track] origin/remote_branch_name</span><br></pre></td></tr></table></figure>
+<p>–track选项可以省略</p>
+<h3 id="2、设置已有分支和远端分支的跟踪关系"><a href="#2、设置已有分支和远端分支的跟踪关系" class="headerlink" title="2、设置已有分支和远端分支的跟踪关系"></a>2、设置已有分支和远端分支的跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch -u  origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure>
+<p>注意：-u选项是–set-upstream-to的简写，因此上面这条命令可以写作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch --set-upstream-to=origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure></p>
+<p>local_branch_name可以省略，默认值为当前分支</p>
+<h2 id="多个git-ssh-key-问题"><a href="#多个git-ssh-key-问题" class="headerlink" title="多个git ssh key 问题"></a>多个git ssh key 问题</h2><p><a href="https://www.jianshu.com/p/f7f4142a1556" target="_blank" rel="noopener">https://www.jianshu.com/p/f7f4142a1556</a></p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html" target="_blank" rel="noopener">https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html</a><br><a href="https://www.jianshu.com/p/82123524e1c0" target="_blank" rel="noopener">本地git config配置和git基本操作</a></p>
 
           
         
@@ -1692,7 +1452,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="git config生效顺序：3 -&amp;gt; 2 -&amp;gt; 1  对系统上所有用户及他们所拥有的仓库都生效 -&amp;gt; /etc/gitconfig1git config --system xxx   Git 会读写这个文件。  每个用户的~/.gitconfig文件 1git config --global xxx  各个库中 Git 目录下的配置文件（.git/config） 1git co">
+<meta name="description" content="基本数据类型以及操作基本数据类型： string, hash, list, set, sort setTO DO: 总结数据操作及应用场景 持久化两种方式： RDB 和 AOF 选择和使用（1）只做缓存： 可以都不同（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git Config">
-<meta property="og:url" content="http://yoursite.com/2018/09/16/日记本/git-常用命令2018-09-15/index.html">
+<meta property="og:title" content="Redis 基本数据 &amp;&amp; 持久化">
+<meta property="og:url" content="http://yoursite.com/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/index.html">
 <meta property="og:site_name" content="Beihang&#39;s Tech Blog">
-<meta property="og:description" content="git config生效顺序：3 -&amp;gt; 2 -&amp;gt; 1  对系统上所有用户及他们所拥有的仓库都生效 -&amp;gt; /etc/gitconfig1git config --system xxx   Git 会读写这个文件。  每个用户的~/.gitconfig文件 1git config --global xxx  各个库中 Git 目录下的配置文件（.git/config） 1git co">
+<meta property="og:description" content="基本数据类型以及操作基本数据类型： string, hash, list, set, sort setTO DO: 总结数据操作及应用场景 持久化两种方式： RDB 和 AOF 选择和使用（1）只做缓存： 可以都不同（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-16T03:30:01.000Z">
+<meta property="og:updated_time" content="2018-09-16T03:39:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git Config">
-<meta name="twitter:description" content="git config生效顺序：3 -&amp;gt; 2 -&amp;gt; 1  对系统上所有用户及他们所拥有的仓库都生效 -&amp;gt; /etc/gitconfig1git config --system xxx   Git 会读写这个文件。  每个用户的~/.gitconfig文件 1git config --global xxx  各个库中 Git 目录下的配置文件（.git/config） 1git co">
+<meta name="twitter:title" content="Redis 基本数据 &amp;&amp; 持久化">
+<meta name="twitter:description" content="基本数据类型以及操作基本数据类型： string, hash, list, set, sort setTO DO: 总结数据操作及应用场景 持久化两种方式： RDB 和 AOF 选择和使用（1）只做缓存： 可以都不同（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/16/日记本/git-常用命令2018-09-15/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/"/>
 
 
 
 
 
-  <title>Git Config | Beihang's Tech Blog</title>
+  <title>Redis 基本数据 && 持久化 | Beihang's Tech Blog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/git-常用命令2018-09-15/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git Config</h1>
+          <h1 class="post-title" itemprop="name headline">Redis 基本数据 && 持久化</h1>
         
 
         <div class="post-meta">
@@ -299,27 +299,32 @@
       
 
       
-        <h2 id="git-config"><a href="#git-config" class="headerlink" title="git config"></a>git config</h2><p>生效顺序：<strong>3 -&gt; 2 -&gt; 1</strong></p>
-<ol>
-<li>对系统上所有用户及他们所拥有的仓库都生效 -&gt; /etc/gitconfig<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --system xxx</span><br></pre></td></tr></table></figure>
+        <h1 id="基本数据类型以及操作"><a href="#基本数据类型以及操作" class="headerlink" title="基本数据类型以及操作"></a>基本数据类型以及操作</h1><p>基本数据类型： string, hash, list, set, sort set<br>TO DO: 总结数据操作及应用场景</p>
+<h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><p>两种方式： RDB 和 AOF</p>
+<h2 id="选择和使用"><a href="#选择和使用" class="headerlink" title="选择和使用"></a>选择和使用</h2><p>（1）只做缓存： 可以都不同<br>（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整<br>（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save 900 1 这条规则<br>（4）启动AOF，最坏丢失不超过2秒数据。  a.带来一定的IO b.rewrite 阻塞写到新文件 可以将64M 改写为5G以上<br>（5）不使用AOF 仅靠Master-Slave Replication 实现高可用性，省掉IO，但是如果Master/Slave同时当掉，丢失十几分钟数据，启动脚本时比较 Master/Slave中较新的RDB文件载入。（新浪架构）</p>
+<p>启动时先读AOF?</p>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>dump.rdb<br>持久化可以在指定的时间间隔内生成数据集的时间点快照<br>默认快照触发条件:</p>
+<ul>
+<li>1分钟改1万次</li>
+<li>or 5分钟改10次</li>
+<li>or 15分钟改1次<h3 id="RDB-的优点"><a href="#RDB-的优点" class="headerlink" title="RDB 的优点:"></a>RDB 的优点:</h3>（1）适合大规模数据恢复<br>（2）对数据完整性和一致性要求不高<h3 id="RDB-的缺点"><a href="#RDB-的缺点" class="headerlink" title="RDB 的缺点:"></a>RDB 的缺点:</h3>（1） 丢失最后一次保存的数据<br>（2）本身数据集大，fork() 可能会非常耗时，造成服务器在某某毫秒内停止处理客户端</li>
+</ul>
+<h2 id="AOF-Append-only-log"><a href="#AOF-Append-only-log" class="headerlink" title="AOF (Append only log)"></a>AOF (Append only log)</h2><p>以日志的形式来记录每个<strong>写</strong>操作，并在服务器启动时，通过重新执行这些命令来还原数据集。 最多丢失一秒数据。<br>redis.conf -&gt; <strong>appendonly.aof</strong></p>
+<blockquote>
+<p>AOF 启动 ： redis-server /../redis_aof.conf<br>AOF 修复 ： redis-check-aof –fix appendonly.aof (网络故障等)</p>
+</blockquote>
+<h3 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h3><p>No-appendfsync-on-rewrite no<br>auto-aof-rewrite-min-percentage 100<br>auto-aof-rewrite-min-size 64mb (默认)</p>
+<h3 id="Appendfsync"><a href="#Appendfsync" class="headerlink" title="Appendfsync"></a>Appendfsync</h3><ul>
+<li>Always : 同步持久化，每次发生数据变更立即记录到硬盘，性能差，数据完整性好<ul>
+<li>Everysec : <strong>默认配置</strong>。异步操作，每秒记录一次，有可能1秒数据丢失</li>
+<li>No <h3 id="Rewrite"><a href="#Rewrite" class="headerlink" title="Rewrite"></a>Rewrite</h3></li>
+<li>AOF文件追加会越来越大，为避免这种情况，新增重写机制，当AOF文件大小超过设定阈值，Redis会启动AOF文件内容压缩，只保留恢复数据的最小指令集，可以使用bgrewriteaof</li>
+<li>fork一条新进程 将整个内存钟数据库内容用命令的形式重写一个新的aof文件</li>
+<li>记录上一个重写AOF文件大小，默认配置是当AOF文件大小是上次rewrite后的一倍且文件大于64M时触发 redis.conf中（auto-aof-rewrite-min-percentage 100 auto-aof-rewrite-min-size 64mb）<h3 id="AOF优点"><a href="#AOF优点" class="headerlink" title="AOF优点"></a>AOF优点</h3>（1）配置灵活：每秒同步，每修改同步，不同步<h3 id="AOF缺点"><a href="#AOF缺点" class="headerlink" title="AOF缺点"></a>AOF缺点</h3>（1）相同数据aof文件大于rdb<br>（2）AOF运行效率慢于rdb，不同步效率和rdb相同</li>
+</ul>
 </li>
-</ol>
-<p>Git 会读写这个文件。</p>
-<ol start="2">
-<li><p>每个用户的~/.gitconfig文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global xxx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>各个库中 Git 目录下的配置文件（.git/config）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config xxx</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="设置git分支的跟踪关系"><a href="#设置git分支的跟踪关系" class="headerlink" title="设置git分支的跟踪关系"></a>设置git分支的跟踪关系</h2><h3 id="1、新建一个分支时设置跟踪关系"><a href="#1、新建一个分支时设置跟踪关系" class="headerlink" title="1、新建一个分支时设置跟踪关系"></a>1、新建一个分支时设置跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  checkout -b new_branch_name  [--track] origin/remote_branch_name</span><br></pre></td></tr></table></figure>
-<p>–track选项可以省略</p>
-<h3 id="2、设置已有分支和远端分支的跟踪关系"><a href="#2、设置已有分支和远端分支的跟踪关系" class="headerlink" title="2、设置已有分支和远端分支的跟踪关系"></a>2、设置已有分支和远端分支的跟踪关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch -u  origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure>
-<p>注意：-u选项是–set-upstream-to的简写，因此上面这条命令可以写作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  branch --set-upstream-to=origin/remote_branch_name  local_branch_name</span><br></pre></td></tr></table></figure></p>
-<p>local_branch_name可以省略，默认值为当前分支</p>
-<h2 id="多个git-ssh-key-问题"><a href="#多个git-ssh-key-问题" class="headerlink" title="多个git ssh key 问题"></a>多个git ssh key 问题</h2><p><a href="https://www.jianshu.com/p/f7f4142a1556" target="_blank" rel="noopener">https://www.jianshu.com/p/f7f4142a1556</a></p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html" target="_blank" rel="noopener">https://sandwind.gitbooks.io/git-pro-cn/content/git-base/get.html</a><br><a href="https://www.jianshu.com/p/82123524e1c0" target="_blank" rel="noopener">本地git config配置和git基本操作</a></p>
+</ul>
+<p>参考博客：<br><a href="https://redis.io/topics/persistence" target="_blank" rel="noopener">官网</a><br><a href="https://www.cnblogs.com/MPPC/p/5924738.html" target="_blank" rel="noopener">解析配置文件 redis.conf、Redis持久化RDB、Redis的主从复制</a></p>
 
       
     </div>
@@ -344,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/16/画图/UML-2018-09-04/" rel="next" title="UML 类图">
-                <i class="fa fa-chevron-left"></i> UML 类图
+              <a href="/2018/09/16/Java-Powermock/powermock-series-2---测试私有方法，私有构造函数/" rel="next" title="PowerMock Series 2">
+                <i class="fa fa-chevron-left"></i> PowerMock Series 2
               </a>
             
           </div>
@@ -354,8 +359,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/16/text-image/" rel="prev" title="text image">
-                text image <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/16/Backend-Redis/Redis-事务/" rel="prev" title="Redis Transaction">
+                Redis Transaction <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -433,7 +438,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -470,7 +475,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git-config"><span class="nav-number">1.</span> <span class="nav-text">git config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置git分支的跟踪关系"><span class="nav-number">2.</span> <span class="nav-text">设置git分支的跟踪关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、新建一个分支时设置跟踪关系"><span class="nav-number">2.1.</span> <span class="nav-text">1、新建一个分支时设置跟踪关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、设置已有分支和远端分支的跟踪关系"><span class="nav-number">2.2.</span> <span class="nav-text">2、设置已有分支和远端分支的跟踪关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个git-ssh-key-问题"><span class="nav-number">3.</span> <span class="nav-text">多个git ssh key 问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">4.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型以及操作"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型以及操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持久化"><span class="nav-number">2.</span> <span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择和使用"><span class="nav-number">2.1.</span> <span class="nav-text">选择和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB"><span class="nav-number">2.2.</span> <span class="nav-text">RDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB-的优点"><span class="nav-number">2.2.1.</span> <span class="nav-text">RDB 的优点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB-的缺点"><span class="nav-number">2.2.2.</span> <span class="nav-text">RDB 的缺点:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF-Append-only-log"><span class="nav-number">2.3.</span> <span class="nav-text">AOF (Append only log)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关配置"><span class="nav-number">2.3.1.</span> <span class="nav-text">相关配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appendfsync"><span class="nav-number">2.3.2.</span> <span class="nav-text">Appendfsync</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rewrite"><span class="nav-number">2.3.3.</span> <span class="nav-text">Rewrite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF优点"><span class="nav-number">2.3.4.</span> <span class="nav-text">AOF优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF缺点"><span class="nav-number">2.3.5.</span> <span class="nav-text">AOF缺点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
