@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Good night, xiangbao">
+<meta name="description" content="Suppressing Unwanted BehaviorQuick summary Use the @RunWith(PowerMockRunner.class) annotation at the class-level of the test case. Use the @PrepareForTest(ClassWithEvilParentConstructor.class) annotat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2018/09/15/HelloHEXO/index.html">
+<meta property="og:title" content="Beihang&#39;s Tech Blog">
+<meta property="og:url" content="http://yoursite.com/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/index.html">
 <meta property="og:site_name" content="Beihang&#39;s Tech Blog">
-<meta property="og:description" content="Good night, xiangbao">
+<meta property="og:description" content="Suppressing Unwanted BehaviorQuick summary Use the @RunWith(PowerMockRunner.class) annotation at the class-level of the test case. Use the @PrepareForTest(ClassWithEvilParentConstructor.class) annotat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-15T15:35:31.000Z">
+<meta property="og:updated_time" content="2018-09-16T03:19:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="Good night, xiangbao">
+<meta name="twitter:title" content="Beihang&#39;s Tech Blog">
+<meta name="twitter:description" content="Suppressing Unwanted BehaviorQuick summary Use the @RunWith(PowerMockRunner.class) annotation at the class-level of the test case. Use the @PrepareForTest(ClassWithEvilParentConstructor.class) annotat">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/15/HelloHEXO/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/"/>
 
 
 
 
 
-  <title>test | Beihang's Tech Blog</title>
+  <title> | Beihang's Tech Blog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/15/HelloHEXO/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/日记本/powermock-series-3---Suppress-Unwanted-Behavior/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-15T23:08:44+08:00">
-                2018-09-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T11:19:11+08:00">
+                2018-09-16
               </time>
             
 
@@ -299,8 +299,22 @@
       
 
       
-        <p>Good night, xiangbao</p>
-
+        <h1 id="Suppressing-Unwanted-Behavior"><a href="#Suppressing-Unwanted-Behavior" class="headerlink" title="Suppressing Unwanted Behavior"></a>Suppressing Unwanted Behavior</h1><h2 id="Quick-summary"><a href="#Quick-summary" class="headerlink" title="Quick summary"></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#quick-summary" target="_blank" rel="noopener"></a>Quick summary</h2><ol>
+<li>Use the <code>@RunWith(PowerMockRunner.class)</code> annotation at the class-level of the test case.</li>
+<li>Use the <code>@PrepareForTest(ClassWithEvilParentConstructor.class)</code> annotation at the class-level of the test case in combination with<br><code>suppress(constructor(EvilParent.class))</code> to suppress all constructors for the EvilParent class.</li>
+<li>Use the  <code>Whitebox.newInstance(ClassWithEvilConstructor.class)</code> method to instantiate a class without invoking the constructor what so ever.</li>
+<li><p>Use the <code>@SuppressStaticInitializationFor(&quot;org.mycompany.ClassWithEvilStaticInitializer&quot;)</code>annotation to remove the static initializer for the the <code>org.mycompany.ClassWithEvilStaticInitializer</code></p>
+<p>class.</p>
+</li>
+<li>Use the<code>@PrepareForTest(ClassWithEvilMethod.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(method(ClassWithEvilMethod.class, &quot;methodName&quot;))</code><br>to suppress the method with name “methodName” in the ClassWithEvilMethod class.</li>
+<li>Use the <code>@PrepareForTest(ClassWithEvilField.class)</code><br>annotation at the class-level of the test case in combination with<br><code>suppress(field(ClassWithEvilField.class, &quot;fieldName&quot;))</code><br>to suppress the field with name “fieldName” in the ClassWithEvilField class.</li>
+</ol>
+<p>You’ll find the member modification and member matcher methods here:</p>
+<ul>
+<li><code>org.powermock.api.support.membermodification.MemberModifier</code></li>
+<li><code>org.powermock.api.support.membermodification.MemberMatcher</code></li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a href="https://github.com/powermock/powermock/wiki/Suppress-Unwanted-Behavior#example" target="_blank" rel="noopener"></a></h2>
       
     </div>
     
@@ -324,14 +338,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/16/画图/UML-图-2018-09-04/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/16/text-image/" rel="prev" title="text image">
-                text image <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/16/日记本/powermock-series-2---测试私有方法，私有构造函数/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -384,8 +402,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -427,6 +454,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Suppressing-Unwanted-Behavior"><span class="nav-number">1.</span> <span class="nav-text">Suppressing Unwanted Behavior</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-summary"><span class="nav-number">1.1.</span> <span class="nav-text">Quick summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.2.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
