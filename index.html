@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Backend-Redis/2018-09-03-Redis-notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/" itemprop="url">Redis 基本数据 && 持久化</a></h1>
+                <a class="post-title-link" href="/2018/09/16/Backend-Redis/2018-09-03-Redis-notes/" itemprop="url">redis notes -  lock and queue</a></h1>
         
 
         <div class="post-meta">
@@ -270,6 +270,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Backend-DataBase/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend-DataBase</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -300,13 +322,15 @@
       
         
           
-          基本数据类型以及操作基本数据类型： string, hash, list, set, sort setTO DO: 总结数据操作及应用场景
-持久化两种方式： RDB 和 AOF
-选择和使用（1）只做缓存： 可以都不同（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整（3）
+          Summary from Redis 深度历险分布式锁
+原子问题 To ensure the automic
+1234setnx lock:beihanz true expire lock:beihanz 5--&gt; set lock:beihanz true ex 5 nx
+
+超时问题Redi
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/#more" rel="contents">
+            <a class="btn" href="/2018/09/16/Backend-Redis/2018-09-03-Redis-notes/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -398,6 +422,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Backend-DataBase/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend-DataBase</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -510,7 +556,7 @@ UNWATCH 取消 WATCH
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Backend-Redis/2018-09-03-Redis-notes/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -529,7 +575,7 @@ UNWATCH 取消 WATCH
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/16/Backend-Redis/2018-09-03-Redis-notes/" itemprop="url">redis notes -  lock and queue</a></h1>
+                <a class="post-title-link" href="/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/" itemprop="url">Redis 基本数据 && 持久化</a></h1>
         
 
         <div class="post-meta">
@@ -581,15 +627,13 @@ UNWATCH 取消 WATCH
       
         
           
-          Summary from Redis 深度历险分布式锁
-原子问题 To ensure the automic
-1234setnx lock:beihanz true expire lock:beihanz 5--&gt; set lock:beihanz true ex 5 nx
-
-超时问题Redi
+          基本数据类型以及操作基本数据类型： string, hash, list, set, sort setTO DO: 总结数据操作及应用场景
+持久化两种方式： RDB 和 AOF
+选择和使用（1）只做缓存： 可以都不同（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整（3）
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/09/16/Backend-Redis/2018-09-03-Redis-notes/#more" rel="contents">
+            <a class="btn" href="/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1199,6 +1243,28 @@ Use the @PrepareFor
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/画图/" itemprop="url" rel="index">
+                    <span itemprop="name">画图</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1330,6 +1396,15 @@ private,public 和protected,在类图中分别用符号-、+和#表示方法
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
