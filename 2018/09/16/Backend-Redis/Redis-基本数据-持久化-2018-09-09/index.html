@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Redis,DB," />
 
 
 
@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="基本数据类型以及操作基本数据类型： string, hash, list, set, sort setTO DO: 总结数据操作及应用场景 持久化两种方式： RDB 和 AOF 选择和使用（1）只做缓存： 可以都不同（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save">
+<meta name="keywords" content="Redis,DB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis 基本数据 &amp;&amp; 持久化">
 <meta property="og:url" content="http://yoursite.com/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/index.html">
 <meta property="og:site_name" content="Beihang&#39;s Tech Blog">
 <meta property="og:description" content="基本数据类型以及操作基本数据类型： string, hash, list, set, sort setTO DO: 总结数据操作及应用场景 持久化两种方式： RDB 和 AOF 选择和使用（1）只做缓存： 可以都不同（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-16T03:39:57.000Z">
+<meta property="og:updated_time" content="2018-09-18T02:39:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis 基本数据 &amp;&amp; 持久化">
 <meta name="twitter:description" content="基本数据类型以及操作基本数据类型： string, hash, list, set, sort setTO DO: 总结数据操作及应用场景 持久化两种方式： RDB 和 AOF 选择和使用（1）只做缓存： 可以都不同（2）同时开启两种方式： 重启时首先加载AOF文件，因为AOF文件比RDB完整（3）不要只用AOF，RDB做后备用途。在Slave上持久化RDB文件，15分钟备份一次，只保留save">
@@ -190,6 +191,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -237,7 +258,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://wx3.sinaimg.cn/square/6b2ced7fly8fnceivnafnj20v90vb765.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -271,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Backend-DB/" itemprop="url" rel="index">
+                    <span itemprop="name">Backend-DB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -339,6 +382,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"># Redis</a>
+          
+            <a href="/tags/DB/" rel="tag"># DB</a>
+          
+        </div>
       
 
       
@@ -427,6 +478,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="https://wx3.sinaimg.cn/square/6b2ced7fly8fnceivnafnj20v90vb765.jpg"
+                alt="Beihang" />
+            
               <p class="site-author-name" itemprop="name">Beihang</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -449,12 +504,21 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
