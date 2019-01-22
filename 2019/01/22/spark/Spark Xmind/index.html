@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="PowerMock," />
+  <meta name="keywords" content="Spark," />
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="Getting Starteduse : rely on EasyMock or Mockito and a test framework Bypass Encapsulation mock 绕过封装翻译自https://github.com/powermock/powermock/wiki/Bypass-Encapsulation Quick summaryWhitebox class prov">
-<meta name="keywords" content="PowerMock">
+<meta name="description" content="Spark xmind">
+<meta name="keywords" content="Spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PowerMock Series 2">
-<meta property="og:url" content="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-2---测试私有方法，私有构造函数/index.html">
+<meta property="og:title" content="Spark Xmind">
+<meta property="og:url" content="http://yoursite.com/2019/01/22/spark/Spark Xmind/index.html">
 <meta property="og:site_name" content="Beihang&#39;s Tech Blog">
-<meta property="og:description" content="Getting Starteduse : rely on EasyMock or Mockito and a test framework Bypass Encapsulation mock 绕过封装翻译自https://github.com/powermock/powermock/wiki/Bypass-Encapsulation Quick summaryWhitebox class prov">
+<meta property="og:description" content="Spark xmind">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-18T02:42:10.000Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/22/spark/Spark%20Xmind/Spark%20xind.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/22/spark/Spark%20Xmind/Spark%20xind.png">
+<meta property="og:updated_time" content="2019-01-22T06:32:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PowerMock Series 2">
-<meta name="twitter:description" content="Getting Starteduse : rely on EasyMock or Mockito and a test framework Bypass Encapsulation mock 绕过封装翻译自https://github.com/powermock/powermock/wiki/Bypass-Encapsulation Quick summaryWhitebox class prov">
+<meta name="twitter:title" content="Spark Xmind">
+<meta name="twitter:description" content="Spark xmind">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/22/spark/Spark%20Xmind/Spark%20xind.png">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-2---测试私有方法，私有构造函数/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/22/spark/Spark Xmind/"/>
 
 
 
 
 
-  <title>PowerMock Series 2 | Beihang's Tech Blog</title>
+  <title>Spark Xmind | Beihang's Tech Blog</title>
   
 
 
@@ -253,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Java-Powermock/powermock-series-2---测试私有方法，私有构造函数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/spark/Spark Xmind/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Beihang">
@@ -270,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PowerMock Series 2</h1>
+          <h1 class="post-title" itemprop="name headline">Spark Xmind</h1>
         
 
         <div class="post-meta">
@@ -282,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-16T10:20:41+08:00">
-                2018-09-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T14:16:08+08:00">
+                2019-01-22
               </time>
             
 
@@ -305,8 +308,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/UnitTest/" itemprop="url" rel="index">
-                    <span itemprop="name">UnitTest</span>
+                  <a href="/categories/Spark/" itemprop="url" rel="index">
+                    <span itemprop="name">Spark</span>
                   </a>
                 </span>
 
@@ -342,39 +345,8 @@
       
 
       
-        <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><p>use : rely on EasyMock or Mockito and a test framework</p>
-<h1 id="Bypass-Encapsulation-mock-绕过封装"><a href="#Bypass-Encapsulation-mock-绕过封装" class="headerlink" title="Bypass Encapsulation mock 绕过封装"></a>Bypass Encapsulation mock 绕过封装</h1><p>翻译自<br><a href="https://github.com/powermock/powermock/wiki/Bypass-Encapsulation" target="_blank" rel="noopener">https://github.com/powermock/powermock/wiki/Bypass-Encapsulation</a></p>
-<h2 id="Quick-summary"><a href="#Quick-summary" class="headerlink" title="Quick summary"></a>Quick summary</h2><p><a href="http://www.javadoc.io/doc/org.powermock/powermock-reflect/1.7.1" target="_blank" rel="noopener">Whitebox</a></p>
-<p>class provides a set of methods which could you help bypass encapsulation if it required. Usually, it’s not a good idea to get/modify non-public fields, but sometimes it’s only way to cover code by test for future refactoring.</p>
-<ol>
-<li>Use <code>Whitebox.setInternalState(..)</code> to set a non-public member of an instance or class. 设置内部私有成员</li>
-<li>Use <code>Whitebox.getInternalState(..)</code> to get a non-public member of an instance or class. 获取内部私有成员</li>
-<li>Use <code>Whitebox.invokeMethod(..)</code> to invoke a non-public method of an instance or class. 调用私有方法</li>
-<li>Use <code>Whitebox.invokeConstructor(..)</code> to create an instance of a class with a private constructor. 调用私有构造函数<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2></li>
-</ol>
-<ul>
-<li>1 调用私有方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private int sum(int a, int b) &#123;</span><br><span class="line">	return a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int sum = Whitebox.&lt;Integer&gt; invokeMethod(myInstance, &quot;sum&quot;, 1, 2);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>2 私有方法重载情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">private int myMethod(int id) &#123;		</span><br><span class="line">	return 2*id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int myMethod(Integer id) &#123;		</span><br><span class="line">		return 3*id;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>根据传入参数class判断用哪个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int result = Whitebox.&lt;Integer&gt; invokeMethod(myInstance, new Class&lt;?&gt;[]&#123;int.class&#125;, &quot;myMethod&quot;, 1);</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>3 调用私有构造器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class PrivateConstructorInstantiationDemo &#123;</span><br><span class="line"></span><br><span class="line">	private final int state;</span><br><span class="line"></span><br><span class="line">	private PrivateConstructorInstantiationDemo(int state) &#123;</span><br><span class="line">		this.state = state;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int getState() &#123;</span><br><span class="line">		return state;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PrivateConstructorInstantiationDemo instance =  WhiteBox.invokeConstructor(</span><br><span class="line">				PrivateConstructorInstantiationDemo.class, 43);</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><ol start="4">
-<li>构造器重载的情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class PrivateConstructorInstantiationDemo &#123;</span><br><span class="line"></span><br><span class="line">	private final int state;</span><br><span class="line"></span><br><span class="line">	private PrivateConstructorInstantiationDemo(int state) &#123;</span><br><span class="line">		this.state = state;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private PrivateConstructorInstantiationDemo(Integer state) &#123;</span><br><span class="line">              this.state = state;</span><br><span class="line">              // do something else</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int getState() &#123;</span><br><span class="line">		return state;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<p>调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrivateConstructorInstantiationDemo instance = Whitebox.invokeConstructor(PrivateConstructorInstantiationDemo.class, new Class&lt;?&gt;[]&#123;Integer.class&#125;, 43);</span><br></pre></td></tr></table></figure></p>
+        <h2 id="Spark-xmind"><a href="#Spark-xmind" class="headerlink" title="Spark xmind"></a>Spark xmind</h2><p><img src="/2019/01/22/spark/Spark Xmind/Spark xind.png" alt=""></p>
+<p><img src="/2019/01/22/spark/Spark Xmind/Spark xind.png" width="50%" height="50%" align="center/"></p>
 
       
     </div>
@@ -392,7 +364,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PowerMock/" rel="tag"># PowerMock</a>
+            <a href="/tags/Spark/" rel="tag"># Spark</a>
           
         </div>
       
@@ -405,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/16/Java-Powermock/powermock-series-1/" rel="next" title="PowerMock Series 1">
-                <i class="fa fa-chevron-left"></i> PowerMock Series 1
+              <a href="/2018/09/26/Backend-Redis/Perl + mason 常用/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -414,10 +386,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/" rel="prev" title="Redis 基本数据 && 持久化">
-                Redis 基本数据 && 持久化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bypass-Encapsulation-mock-绕过封装"><span class="nav-number">2.</span> <span class="nav-text">Bypass Encapsulation mock 绕过封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-summary"><span class="nav-number">2.1.</span> <span class="nav-text">Quick summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例"><span class="nav-number">2.2.</span> <span class="nav-text">举例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spark-xmind"><span class="nav-number">1.</span> <span class="nav-text">Spark xmind</span></a></li></ol></div>
             
 
           </div>
