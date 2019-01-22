@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Beihang&#39;s Tech Blog">
 <meta property="og:description" content="Summary from Redis 深度历险分布式锁 原子问题 To ensure the automic 1234setnx lock:beihanz true expire lock:beihanz 5--&amp;gt; set lock:beihanz true ex 5 nx  超时问题Redis 的分布式锁不能解决超时问题，如果在加锁和释放锁之间的逻辑执行的太长，以至于超出了锁的超时限制，就">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-18T02:39:16.000Z">
+<meta property="og:updated_time" content="2018-09-21T08:25:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis notes -  lock and queue">
 <meta name="twitter:description" content="Summary from Redis 深度历险分布式锁 原子问题 To ensure the automic 1234setnx lock:beihanz true expire lock:beihanz 5--&amp;gt; set lock:beihanz true ex 5 nx  超时问题Redis 的分布式锁不能解决超时问题，如果在加锁和释放锁之间的逻辑执行的太长，以至于超出了锁的超时限制，就">
@@ -348,9 +348,9 @@
 </li>
 <li><p>超时问题<br>Redis 的分布式锁不能解决超时问题，如果在加锁和释放锁之间的逻辑执行的太长，以至于超出了锁的超时限制，就会出现问题。因为这时候锁过期了，第二个线程重新持有了这把锁，但是紧接着第一个线程执行完了业务逻辑，就把锁给释放了，第三个线程就会在第二个线程逻辑执行完之间拿到了锁。<br><strong>解决方案</strong>：使用随机数作为锁，然后再释放锁的时候判断是不是当前随机数。</p>
 </li>
-<li>实现可重入<br>使用ThreadLocal 记录当前锁的计数<h2 id="延时队列"><a href="#延时队列" class="headerlink" title="延时队列"></a>延时队列</h2></li>
+<li>实现可重入<br>使用ThreadLocal 记录当前锁的计数</li>
 </ol>
-
+<h2 id="延时队列"><a href="#延时队列" class="headerlink" title="延时队列"></a>延时队列</h2>
       
     </div>
     
@@ -382,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/16/Backend-Redis/Redis-事务/" rel="next" title="Redis Transaction">
-                <i class="fa fa-chevron-left"></i> Redis Transaction
+              <a href="/2018/09/16/GitCLI/git-常用命令2018-09-15/" rel="next" title="Git Config">
+                <i class="fa fa-chevron-left"></i> Git Config
               </a>
             
           </div>
@@ -392,8 +392,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/16/Backend-Redis/Redis-基本数据-持久化-2018-09-09/" rel="prev" title="Redis 基本数据 && 持久化">
-                Redis 基本数据 && 持久化 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/16/UML/UML-2018-09-04/" rel="prev" title="UML 类图">
+                UML 类图 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -475,7 +475,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -486,7 +486,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -497,7 +497,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -560,7 +560,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
